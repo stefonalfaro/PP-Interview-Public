@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "PP_BE_Interview": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7282",
+      "launchBrowser": false
+    }
+  }
+}
