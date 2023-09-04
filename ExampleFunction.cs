@@ -13,22 +13,21 @@ using Newtonsoft.Json;
 
 namespace PP_BE_Interview
 {
-    public class Function1
+    public class ExampleFunction
     {
-        private readonly ILogger<Function1> _logger;
+        private readonly ILogger<ExampleFunction> _logger;
 
-        public Function1(ILogger<Function1> log)
+        public ExampleFunction(ILogger<ExampleFunction> log)
         {
             _logger = log;
         }
 
-        [FunctionName("Function1")]
+        [FunctionName("ExampleFunction")]
         [OpenApiOperation(operationId: "Run", tags: new[] { "name" })]
         [OpenApiSecurity("function_key", SecuritySchemeType.ApiKey, Name = "code", In = OpenApiSecurityLocationType.Query)]
         [OpenApiParameter(name: "name", In = ParameterLocation.Query, Required = true, Type = typeof(string), Description = "The **Name** parameter")]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "text/plain", bodyType: typeof(string), Description = "The OK response")]
-        public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req)
+        public async Task<IActionResult> ExampleFunctionFunction([HttpTrigger(AuthorizationLevel.Function, "get", Route = "examplefunction")] HttpRequest req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
